@@ -1,33 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bgColor" tools:context=".EachCountry">
+    tools:context=".Global">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/mainParent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bgColor"
+        tools:context=".MainActivity">
     <TextView
-        android:id="@+id/countryName"
+        android:id="@+id/global_stats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        android:text="Indian Stats"
+        android:text="Global Stats"
         android:textSize="16sp"
         android:textStyle="bold" />
 
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/countryViewGraph"
+        android:id="@+id/cardViewGraph"
         android:layout_width="match_parent"
         android:layout_height="180dp"
-        android:layout_below="@id/countryName"
-
+        android:layout_below="@id/global_stats"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
-        android:outlineAmbientShadowColor="@color/primary"
+        android:outlineAmbientShadowColor="@color/dark"
         android:outlineSpotShadowColor="@color/dark"
 
         app:cardCornerRadius="8dp"
@@ -41,30 +49,27 @@
 
             android:weightSum="2"
             >
-            <org.eazegraph.lib.charts.BarChart
-
-                android:id="@+id/barchart3"
+            <org.eazegraph.lib.charts.PieChart
+                android:id="@+id/piechart"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
+
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
                 android:layout_weight="1"
+
                 android:padding="6dp"
-
-                app:egBarWidth="20dp"
-                app:egFixedBarWidth="true"
-
-                app:egLegendHeight="40dp"/>
-
+                />
             <ProgressBar
-                android:id="@+id/progress_circular3"
+                android:id="@+id/progress_circular"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
+
                 android:layout_gravity="center"
                 android:visibility="visible"/>
             <LinearLayout
-                android:id="@+id/infolist3"
+                android:id="@+id/infolist"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"
@@ -150,10 +155,10 @@
     </androidx.cardview.widget.CardView>
 
     <LinearLayout
-        android:id="@+id/topc3"
+        android:id="@+id/topc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/countryViewGraph"
+        android:layout_below="@id/cardViewGraph"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
@@ -178,7 +183,7 @@
                 android:textStyle="bold"
                 />
             <TextView
-                android:id="@+id/tvCases3"
+                android:id="@+id/tvCases"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -205,7 +210,7 @@
                 android:textStyle="bold"
                 />
             <TextView
-                android:id="@+id/tvDeath3"
+                android:id="@+id/tvDeath"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -219,10 +224,10 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/botc3"
+        android:id="@+id/botc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/topc3"
+        android:layout_below="@id/topc"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
@@ -247,7 +252,7 @@
                 android:textStyle="bold"
                 />
             <TextView
-                android:id="@+id/tvCured3"
+                android:id="@+id/tvCured"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -273,7 +278,7 @@
                 android:textStyle="bold"
                 />
             <TextView
-                android:id="@+id/tvActive3"
+                android:id="@+id/tvActive"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -287,10 +292,10 @@
 
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/todaystv3"
+        android:id="@+id/todaystv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/botc3"
+        android:layout_below="@id/botc"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
@@ -301,11 +306,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+
             android:text="Today's Cases:"
             android:textSize="14sp"
             android:textStyle="bold"/>
         <TextView
-            android:id="@+id/tvTodaysCases3"
+            android:id="@+id/tvTodaysCases"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -317,11 +323,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/todaystv3"
+        android:layout_below="@id/todaystv"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
         android:background="@drawable/rectangle"
+
         android:paddingLeft="8dp"
         android:paddingRight="8dp">
         <TextView
@@ -332,7 +339,7 @@
             android:textSize="14sp"
             android:textStyle="bold"/>
         <TextView
-            android:id="@+id/tvTodaysDeaths3"
+            android:id="@+id/tvTodaysDeaths"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -341,9 +348,6 @@
             android:textAlignment="textEnd"
             android:textSize="14sp" />
     </LinearLayout>
+    </RelativeLayout>
 
-
-
-
-
-</RelativeLayout>
+</FrameLayout>

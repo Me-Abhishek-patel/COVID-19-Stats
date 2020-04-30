@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/bgColor"
     tools:context=".Countries">
+
     <EditText
         android:id="@+id/searchBar"
         android:layout_width="match_parent"
@@ -19,11 +20,21 @@
         android:singleLine="true"
 
         />
+    <ProgressBar
+        android:id="@+id/progress_circular4"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_below="@+id/searchBar"
+        android:visibility="visible"/>
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_below="@+id/searchBar"
+        android:visibility="invisible"
         android:layout_margin="10dp"/>
 
 </RelativeLayout>

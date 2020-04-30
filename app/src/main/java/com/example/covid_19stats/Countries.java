@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -35,6 +36,7 @@ public class Countries<request> extends AppCompatActivity {
     ListView listView;
     IndvCountry indvCountry;
     CountriesAdapter countriesAdapter;
+    ProgressBar progressBar ;
 
 
     @Override
@@ -44,6 +46,7 @@ public class Countries<request> extends AppCompatActivity {
 
         searchBar = findViewById(R.id.searchBar);
         listView = findViewById(R.id.listView);
+        progressBar = findViewById(R.id.progress_circular4);
 
 
         String url = "https://corona.lmao.ninja/v2/countries/";
@@ -79,7 +82,8 @@ public class Countries<request> extends AppCompatActivity {
 
 
                             }
-
+                            progressBar.setVisibility(View.GONE);
+                            listView.setVisibility(View.VISIBLE);
                             countriesAdapter = new CountriesAdapter(Countries.this, countriesList);
                             listView.setAdapter(countriesAdapter);
 
