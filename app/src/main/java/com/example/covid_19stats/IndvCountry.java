@@ -1,13 +1,25 @@
 package com.example.covid_19stats;
 
 public class IndvCountry {
+
+    /*variables to store data*/
     private String todayCases,deaths,todayDeaths,recovered,active,flag,country,cases;
 
     public IndvCountry() {
 
     }
 
-    public IndvCountry(String todayCases,String deaths,String todayDeaths,String recovered,String active,String flag,String country,String cases){
+    /**
+     * @param todayCases
+     * @param deaths
+     * @param todayDeaths
+     * @param recovered
+     * @param active
+     * @param flag
+     * @param country
+     * @param cases
+     */
+    public IndvCountry(String todayCases, String deaths, String todayDeaths, String recovered, String active, String flag, String country, String cases){
         this.todayCases = todayCases;
         this.flag = flag;
         this.country = country;
@@ -19,6 +31,10 @@ public class IndvCountry {
 
     }
 
+    /**
+     * getter and setter methods
+     * @return
+     */
     public String getTodayCases() {
         return todayCases;
     }

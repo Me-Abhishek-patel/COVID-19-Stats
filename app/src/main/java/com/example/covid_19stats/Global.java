@@ -91,6 +91,11 @@ public class Global extends Fragment {
         return inflater.inflate(R.layout.fragment_global, container, false);
 
     }
+
+    /**
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         tvCases = (TextView) getActivity().findViewById(R.id.tvCases);
@@ -101,7 +106,6 @@ public class Global extends Fragment {
         tvTodaysDeaths = (TextView) getActivity().findViewById(R.id.tvTodaysDeaths);
         progressBar = (ProgressBar) getActivity().findViewById(R.id.progress_circular);
         infoList = (LinearLayout) getActivity().findViewById(R.id.infolist);
-
 
 
         pieChart = getActivity().findViewById(R.id.piechart);

@@ -1,8 +1,6 @@
 package com.example.covid_19stats;
 
-import android.content.Context;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -34,17 +32,17 @@ import org.json.JSONObject;
  * Activities that contain this fragment must implement the
 
  * to handle interaction events.
- * Use the {@link IndianStats2#newInstance} factory method to
+ * Use the {@link IndianStatsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class IndianStats2 extends Fragment {
+public class IndianStatsFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
 
-
+    /*instance variables*/
     BottomNavigationView bottomNavigation;
     TextView tvCases2, tvActive2, tvCured2, tvDeaths2, tvTodaysCases2, tvTodaysDeaths2;
     BarChart mBarChart;
@@ -56,8 +54,7 @@ public class IndianStats2 extends Fragment {
     private String mParam2;
 
 
-
-    public IndianStats2() {
+    public IndianStatsFragment() {
         // Required empty public constructor
     }
 
@@ -67,11 +64,11 @@ public class IndianStats2 extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment IndianStats2.
+     * @return A new instance of fragment IndianStatsFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static IndianStats2 newInstance(String param1, String param2) {
-        IndianStats2 fragment = new IndianStats2();
+    public static IndianStatsFragment newInstance(String param1, String param2) {
+        IndianStatsFragment fragment = new IndianStatsFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -88,6 +85,7 @@ public class IndianStats2 extends Fragment {
         }
     }
 
+    /*setting layout to inflat*/
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -95,7 +93,7 @@ public class IndianStats2 extends Fragment {
         return inflater.inflate(R.layout.activity_indian_stats, container, false);
     }
 
-
+    /*initialising variables*/
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         bottomNavigation = getView().findViewById(R.id.bottom_navigation);
@@ -107,16 +105,20 @@ public class IndianStats2 extends Fragment {
         tvTodaysDeaths2 = (TextView) getView().findViewById(R.id.tvTodaysDeaths2);
         progressBar = (ProgressBar) getView().findViewById(R.id.progress_circular2);
         infoList = (LinearLayout) getView().findViewById(R.id.infolist2);
-
         mBarChart = (BarChart) getView().findViewById(R.id.barchart);
 
+        /*Declaring and initialising url string fot Api url*/
         String url  = "https://corona.lmao.ninja/v2/countries/india";
+
+        /*making request queue to request internet connection and data*/
         RequestQueue requestQueue;
         requestQueue = Volley.newRequestQueue(getContext());
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
+
+                    /*Setting Data on views*/
 
                     tvCases2.setText(String.valueOf(response.getString("cases")));
                     tvActive2.setText(String.valueOf(response.getInt("active")));
@@ -125,11 +127,11 @@ public class IndianStats2 extends Fragment {
                     tvTodaysCases2.setText(String.valueOf(response.getInt("todayCases")));
                     tvTodaysDeaths2.setText(String.valueOf(response.getInt("todayDeaths")));
 
-
+                    /*Hiding progressbar*/
                     progressBar.setVisibility(View.GONE);
                     infoList.setVisibility(View.VISIBLE);
 
-
+                    /*Setting data on charts*/
                     mBarChart.addBar(new BarModel("Cases",response.getInt("cases"), Color.parseColor("#FFA726")));
                     mBarChart.addBar(new BarModel("Cured",response.getInt("recovered"), Color.parseColor("#66BB6A")));
                     mBarChart.addBar(new BarModel("Deaths",response.getInt("deaths"), Color.parseColor("#EF5350")));

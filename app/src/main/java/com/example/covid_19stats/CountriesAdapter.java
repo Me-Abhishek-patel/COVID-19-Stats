@@ -22,13 +22,25 @@ public class CountriesAdapter extends ArrayAdapter<IndvCountry> {
     private List<IndvCountry> countriesList;
     private List<IndvCountry> countryList2;
 
-    public CountriesAdapter( Context context, List<IndvCountry> countriesList) {
+
+    /**
+     * @param context
+     * @param countriesList
+     */
+    public CountriesAdapter(Context context, List<IndvCountry> countriesList) {
         super(context, R.layout.country_list,countriesList);
         this.context = context;
         this.countriesList = countriesList;
         this.countryList2 = countriesList;
     }
 
+    /**
+     *
+     * @param position
+     * @param convertView
+     * @param parent
+     * @return
+     */
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -57,6 +69,10 @@ public class CountriesAdapter extends ArrayAdapter<IndvCountry> {
         return position;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public Filter getFilter() {
         Filter filter = new Filter() {

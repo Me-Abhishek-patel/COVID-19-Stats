@@ -38,7 +38,9 @@ public class Countries<request> extends AppCompatActivity {
     CountriesAdapter countriesAdapter;
     ProgressBar progressBar ;
 
-
+    /**
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +54,10 @@ public class Countries<request> extends AppCompatActivity {
         String url = "https://corona.lmao.ninja/v2/countries/";
 
 
-
+        /**
+         *
+         * request
+         */
         StringRequest jRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override

@@ -15,6 +15,7 @@
         android:background="@drawable/searchbg"
         android:drawablePadding="15dp"
         android:hint="Search"
+        android:visibility="gone"
         android:maxLines="1"
         android:paddingLeft="10dp"
         android:singleLine="true"
