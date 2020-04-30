@@ -2,9 +2,12 @@ package com.example.covid_19stats;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -33,11 +36,18 @@ public class MainActivity extends AppCompatActivity {
     ProgressBar progressBar ;
     LinearLayout infoList;
 
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         bottomNavigation = findViewById(R.id.bottom_navigation);
+
+        bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
+
         tvCases = (TextView) findViewById(R.id.tvCases);
         tvCured = (TextView) findViewById(R.id.tvCured);
         tvActive = (TextView) findViewById(R.id.tvActive);
@@ -46,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
         tvTodaysDeaths = (TextView) findViewById(R.id.tvTodaysDeaths);
         progressBar = (ProgressBar) findViewById(R.id.progress_circular);
         infoList = (LinearLayout) findViewById(R.id.infolist);
+
+
 
         pieChart = findViewById(R.id.piechart);
 
@@ -92,10 +104,32 @@ public class MainActivity extends AppCompatActivity {
         requestQueue.add(jsonObjectRequest);
 
     }
-    public void launchIndian(View view){
-        startActivity(new Intent(getApplicationContext(),IndianStats.class));
+
+    public void openFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
-    public void launchCountries(View view){
-        startActivity(new Intent(getApplicationContext(),Countries.class));
-    }
+
+
+
+    BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    switch (item.getItemId()) {
+                        case R.id.navigation_global:
+
+                            return true;
+                        case R.id.navigation_india:
+                            openFragment(IndianStats2.newInstance("", ""));
+                            return true;
+                        case R.id.navigation_countries:
+                            startActivity(new Intent(getApplicationContext(),Countries.class));
+                            return true;
+                    }
+                    return false;
+                }
+            };
+
 }

@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
   <item
-      android:id="@+id/navigation_home"
+      android:id="@+id/navigation_global"
       android:icon="@drawable/virus"
       android:title="Global" />
 
 
   <item
 
-      android:id="@+id/navigation_notifications"
+      android:id="@+id/navigation_india"
       android:icon="@drawable/india"
       android:title="India"
       />
     
     <item
-        android:id="@+id/navigation_sms"
+        android:id="@+id/navigation_countries"
         android:icon="@drawable/global"
+
         android:title="Countries" />
 
 </menu>

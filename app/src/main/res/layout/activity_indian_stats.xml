@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgColor"
-    tools:context=".IndianStats">
+    tools:context=".MainActivity">
     <TextView
         android:id="@+id/indian_stats"
         android:layout_width="wrap_content"
@@ -350,26 +350,5 @@
 
 
 
-    <FrameLayout
-        android:id="@+id/container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-
-        <!-- Main content -->
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_navigation"
-            android:layout_width="match_parent"
-
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:background="@color/dark"
-            app:itemIconTint="@color/bgColor"
-            app:itemTextColor="@color/bgColor"
-            app:menu="@menu/bottom_navigation_menu"
-            />
-
-    </FrameLayout>
 
 </RelativeLayout>
